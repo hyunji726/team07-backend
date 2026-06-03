@@ -25,7 +25,12 @@ public class RewardService {
                 carrots,
                 carrots >= 10,
                 carrots >= 20,
-                carrots >= 30
+                carrots >= 30,
+                carrots >= 40,
+                carrots >= 50,
+                carrots >= 60,
+                carrots >= 70
         );
+
     }
 }
