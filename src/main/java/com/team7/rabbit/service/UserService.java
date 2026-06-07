@@ -30,4 +30,45 @@ public class UserService {
                 user.getRabbitState()
         );
     }
+    public User createUser(String username) {
+
+        User user = new User();
+
+        user.setUsername(username);
+        user.setTotalCarrots(0);
+        user.setRabbitState("HEALTHY");
+        user.setSuccessCount(0);
+        user.setFailCount(0);
+        user.setContinuousStreak(0);
+
+        return userRepository.save(user);
+    }
+
+    public User updateUserName(Long userId, String username) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("해당 유저를 찾을 수 없습니다."));
+
+        user.setUsername(username);
+
+        return userRepository.save(user);
+    }
+
+    public User skipRest(Long userId) {
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("유저를 찾을 수 없습니다."));
+
+        user.setFailCount(user.getFailCount() + 1);
+
+        if (user.getFailCount() >= 10) {
+            user.setRabbitState("EXHAUSTED");
+        } else if (user.getFailCount() >= 5) {
+            user.setRabbitState("TIRED");
+        }
+
+        return userRepository.save(user);
+    }
 }

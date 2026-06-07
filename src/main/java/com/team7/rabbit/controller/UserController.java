@@ -6,6 +6,9 @@ import com.team7.rabbit.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import com.team7.rabbit.dto.UserCreateRequestDto;
+import com.team7.rabbit.entity.User;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -20,5 +23,32 @@ public class UserController {
     @GetMapping("/users/{userId}/home")
     public UserHomeResponseDto getUserHomeData(@PathVariable("userId") Long userId) {
         return userService.getUserHomeData(userId);
+    }
+
+    @PostMapping("/users/onboarding")
+    public User createUser(
+            @RequestBody UserCreateRequestDto request) {
+
+        return userService.createUser(
+                request.getUsername()
+        );
+    }
+
+    @PatchMapping("/users/{userId}/name")
+    public User updateUserName(
+            @PathVariable Long userId,
+            @RequestBody UserCreateRequestDto request) {
+
+        return userService.updateUserName(
+                userId,
+                request.getUsername()
+        );
+    }
+
+    @PostMapping("/rest/skip")
+    public User skipRest(
+            @RequestParam Long userId) {
+
+        return userService.skipRest(userId);
     }
 }
