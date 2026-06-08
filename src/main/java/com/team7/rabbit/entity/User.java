@@ -27,4 +27,11 @@ public class User {
 
     @Column(name = "continuous_streak")
     private int continuousStreak;
+
+    @Column(name = "username")
+    private String username;
+
+    @OneToMany(mappedBy = "user")
+    private List<Timer> timers;
 }
+
