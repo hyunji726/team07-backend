@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OnboardingRequestDto {
+public class UserCreateRequestDto {
     private String username;
 }

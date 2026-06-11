@@ -1,4 +1,4 @@
-UserHomeResponseDto.javapackage com.team7.rabbit.dto;
+package com.team7.rabbit.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
