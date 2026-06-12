@@ -20,6 +20,7 @@ public class User {
 
     @Column(name = "rabbit_state")
     private String rabbitState;
+
     @Column(name = "success_count")
     private int successCount;
 
@@ -35,4 +36,3 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Timer> timers;
 }
-
