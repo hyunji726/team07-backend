@@ -35,7 +35,8 @@ public class StatisticsService {
                 successRate,
                 success,
                 fail,
-                user.getContinuousStreak()
+                user.getContinuousStreak(),
+                user.getTotalCarrots()
         );
     }
 }
