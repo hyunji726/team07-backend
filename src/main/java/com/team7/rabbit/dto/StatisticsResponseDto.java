@@ -19,4 +19,7 @@ public class StatisticsResponseDto {
 
     @JsonProperty("continuous_streak")
     private int continuousStreak;
+
+    @JsonProperty("total_carrots")
+    private int totalCarrots;
 }
