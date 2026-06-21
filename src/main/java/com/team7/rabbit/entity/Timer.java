@@ -1,5 +1,6 @@
 package com.team7.rabbit.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class Timer {
     // 어떤 유저의 타이머인지
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     // 콘텐츠 유형
